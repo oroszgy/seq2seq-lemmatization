@@ -23,10 +23,10 @@ rsync:
 
 push:
 	#@echo "Push will delete files doesn't exists in local"
-	rsync $(PARAM) $(LOCAL_FOLDER) $(RSYNC_SERVER)/../
+	rsync $(PARAM) $(LOCAL_FOLDER) $(RSYNC_SERVER)/
 
 pull:
 	#@echo "Pull will delete files doesn't exists in remote server"
-	rsync $(PARAM) $(RSYNC_SERVER) $(LOCAL_FOLDER)/../
+	rsync $(PARAM) $(RSYNC_SERVER) $(LOCAL_FOLDER)/
 
 .PHONY: install dump_requirements data rsync push pull
