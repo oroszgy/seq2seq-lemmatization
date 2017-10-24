@@ -1,0 +1,8 @@
+.git
+**.swp
+.DS_Store
+log/*.log
+spec/reports/*
+.gitmodules
+experiment/
+__pycache__/

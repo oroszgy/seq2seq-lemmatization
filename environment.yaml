@@ -1,0 +1,46 @@
+name: s2s_lemmatization
+channels:
+- soumith
+- anaconda-fusion
+- defaults
+dependencies:
+- certifi=2016.2.28=py35_0
+- cffi=1.10.0=py35_0
+- freetype=2.5.5=2
+- jbig=2.1=0
+- jpeg=9b=0
+- libpng=1.6.30=1
+- libtiff=4.0.6=3
+- mkl=2017.0.3=0
+- numpy=1.13.1=py35_0
+- olefile=0.44=py35_0
+- openssl=1.0.2l=0
+- pandas=0.20.3=py35_0
+- pillow=4.2.1=py35_0
+- pip=9.0.1=py35_1
+- pycparser=2.18=py35_0
+- python=3.5.4=0
+- python-dateutil=2.6.1=py35_0
+- pytz=2017.2=py35_0
+- readline=6.2=2
+- setuptools=36.4.0=py35_0
+- six=1.10.0=py35_0
+- sqlite=3.13.0=0
+- tk=8.5.18=0
+- wheel=0.29.0=py35_0
+- xz=5.2.3=0
+- zlib=1.2.11=0
+- pytorch=0.2.0=py35_4cu75
+- torchvision=0.1.9=py35_1
+- pip:
+  - chardet==3.0.4
+  - hyperdash==0.12.7
+  - idna==2.6
+  - plac==0.9.6
+  - python-slugify==1.2.4
+  - requests==2.18.4
+  - torch==0.2.0.post4
+  - tqdm==4.15.0
+  - unidecode==0.4.21
+  - urllib3==1.22
+prefix: /Users/gorosz/anaconda3/envs/s2s_lemmatization
