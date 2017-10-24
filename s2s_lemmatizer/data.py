@@ -14,11 +14,14 @@ def _parse_ud(path):
             line = line.strip()
             if line:
                 parts = line.split()
+                word, lemma, pos, tags, *_ = parts
+                word = word.lower() if lemma.islower() else word
+                lemma = lemma.replace("+", "")
                 yield {
-                    "word": parts[0],
-                    "lemma": parts[1],
-                    "pos": parts[2],
-                    "tags": parts[3]
+                    "word": word,
+                    "lemma": lemma,
+                    "pos": pos,
+                    "tags": tags
                 }
 
 

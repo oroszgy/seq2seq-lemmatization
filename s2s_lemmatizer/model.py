@@ -8,11 +8,12 @@ from seq2seq.models import EncoderRNN, DecoderRNN, Seq2seq
 from seq2seq.trainer import SupervisedTrainer
 
 
-def build_model(src, tgt, hidden_size, bidirectional, dropout, attention, init_value):
+def build_model(src, tgt, hidden_size, mini_batch_size, bidirectional, dropout, attention, init_value):
     EXPERIMENT.param("Hidden", hidden_size)
     EXPERIMENT.param("Bidirectional", bidirectional)
     EXPERIMENT.param("Dropout", dropout)
     EXPERIMENT.param("Attention", attention)
+    EXPERIMENT.param("Mini-batch", mini_batch_size)
     weight = torch.ones(len(tgt.vocab))
     pad = tgt.vocab.stoi[tgt.pad_token]
     loss = Perplexity(weight, pad)
@@ -26,14 +27,18 @@ def build_model(src, tgt, hidden_size, bidirectional, dropout, attention, init_v
                          use_attention=attention,
                          eos_id=tgt.eos_id, sos_id=tgt.sos_id)
     seq2seq = Seq2seq(encoder, decoder)
+    using_cuda = False
     if torch.cuda.is_available():
+        using_cuda = True
         encoder.cuda()
         decoder.cuda()
         seq2seq.cuda()
         loss.cuda()
+    EXPERIMENT.param("CUDA", using_cuda)
     for param in seq2seq.parameters():
         param.data.uniform_(-init_value, init_value)
-    trainer = SupervisedTrainer(loss=loss, batch_size=10,
+
+    trainer = SupervisedTrainer(loss=loss, batch_size=mini_batch_size,
                                 checkpoint_every=5000, random_seed=42,
                                 print_every=1000)
     return seq2seq, trainer

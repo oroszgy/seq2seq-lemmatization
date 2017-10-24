@@ -6,3 +6,5 @@ spec/reports/*
 .gitmodules
 experiment/
 __pycache__/
+.idea/
+data/
