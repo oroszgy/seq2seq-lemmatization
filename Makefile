@@ -1,13 +1,8 @@
-RSYNC_SERVER = "deep:~/workspace/s2s_lemmatization"
+RSYNC_SERVER = "deep:~/workspace/s2s_lemmatization2"
 LOCAL_FOLDER = "."
 PARAM = -avz --exclude-from .rsyncignore
 
 install:
-	mkdir -p deps
-	conda install pytorch torchvision cuda80 -c soumith
-	cd deps/src && git clone --recursive https://github.com/pytorch/pytorch && cd .. && pip install -e 'git+git@github.com:pytorch/pytorch#egg=pytorch'
-	cd deps && pip install -e 'git+git@github.com:pytorch/text@v0.2.0#egg=torchtext'
-	cd deps && pip install -e 'git+git@github.com:IBM/pytorch-seq2seq#egg=pytorch-seq2seq'
 	pip install -r requirements.txt
 
 dump_requirements:
